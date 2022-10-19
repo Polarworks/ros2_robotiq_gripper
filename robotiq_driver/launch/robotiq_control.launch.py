@@ -83,13 +83,13 @@ def generate_launch_description():
         )
     }
 
-    update_rate_config_file = PathJoinSubstitution(
-        [
-            pkg_share,
-            "config",
-            "robotiq_update_rate.yaml",
-        ]
-    )
+    # update_rate_config_file = PathJoinSubstitution(
+    #     [
+    #         pkg_share,
+    #         "config",
+    #         "robotiq_update_rate.yaml",
+    #     ]
+    # )
 
     controllers_file = "robotiq_controllers.yaml"
     initial_joint_controllers = PathJoinSubstitution(
@@ -101,7 +101,7 @@ def generate_launch_description():
         executable="ros2_control_node",
         parameters=[
             robot_description_param,
-            update_rate_config_file,
+            #update_rate_config_file,
             initial_joint_controllers,
         ],
     )
