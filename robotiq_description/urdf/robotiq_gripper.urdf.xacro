@@ -10,4 +10,14 @@
     <xacro:robotiq_gripper parent="world" sim="$(arg use_sim)" prefix="">
         <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:robotiq_gripper>
+
+    <!-- 
+      This should probably eventually go in the robotiq_gripper_macro.urdf.xacro for easier usage otherwise? 
+      I will also need to add this in my rcs_bringup.launch.py? 
+      I'm taking the name robotiq_gripper from urdf/robotiq_gripper_macro.urdf.xacro, which hard-codes it.
+    -->
+
+    <xacro:include filename="$(find robotiq_description)/urdf/robotiq_gripper.ros2_control.xacro"/>
+
+    <xacro:robotiq_gripper_ros2_control name="robotiq_gripper" com_port="/dev/ttyUSB0"/>
 </robot>
