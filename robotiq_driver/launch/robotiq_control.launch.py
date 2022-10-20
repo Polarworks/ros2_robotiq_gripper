@@ -60,6 +60,17 @@ def generate_launch_description():
             description="Absolute path to gripper URDF file",
         )
     )
+    
+    args.append(launch.actions.DeclareLaunchArgument(
+            name="launch_rviz",
+            default_value="false",
+            description="If true, launch RViz (default false to avoid tf spam)"
+        )
+    )
+    # we need a LaunchConfiguration for this, not a DeclareLaunchArgument :/ -- so clunky 
+
+    launch_rviz_lc = launch.substitutions.LaunchConfiguration("launch_rviz")
+    
     args.append(
         launch.actions.DeclareLaunchArgument(
             name="rvizconfig",
@@ -114,6 +125,7 @@ def generate_launch_description():
 
     rviz_node = launch_ros.actions.Node(
         package="rviz2",
+        condition=launch.conditions.IfCondition(launch_rviz_lc),
         executable="rviz2",
         name="rviz2",
         output="log",

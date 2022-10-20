@@ -19,5 +19,5 @@
 
     <xacro:include filename="$(find robotiq_description)/urdf/robotiq_gripper.ros2_control.xacro"/>
 
-    <xacro:robotiq_gripper_ros2_control name="robotiq_gripper" com_port="/dev/ttyUSB0"/>
+    <xacro:robotiq_gripper_ros2_control name="robotiq_gripper" com_port="/tmp/ttyUR"/>
 </robot>
